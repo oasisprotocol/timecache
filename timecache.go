@@ -55,6 +55,7 @@ func (tc *TimeCache) sweep() {
 }
 
 func (tc *TimeCache) Has(s string) bool {
+	tc.sweep()
 	_, ok := tc.M[s]
 	return ok
 }

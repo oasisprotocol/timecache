@@ -27,3 +27,14 @@ func TestEntriesExpire(t *testing.T) {
 		t.Fatal("should have dropped this from the cache already")
 	}
 }
+
+func TestEntriesExpireHas(t *testing.T) {
+	tc := NewTimeCache(time.Millisecond)
+	tc.Add("item")
+	// Make sure this expires.
+	time.Sleep(time.Millisecond * 10)
+
+	if tc.Has("item") {
+		t.Fatal("should have dropped this from the cache")
+	}
+}
